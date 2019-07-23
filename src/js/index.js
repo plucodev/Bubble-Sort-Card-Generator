@@ -21,11 +21,30 @@ window.onload = function() {
     return cardObject;
   };
   console.log(randomCardNumberGenerator(5));
+
   const sortCardGenerator = () => {
     pass;
   };
 
-  const cardGenerator = () => {
-    pass;
+  const cardGenerator = anArrayOfObjects => {
+    const newArrayOfObjects = anArrayOfObjects.map(item => {
+      let cardContainer = document.createElement("div");
+      let cardHeader = document.createElement("div");
+      let cardBody = document.createElement("div");
+      let cardFooter = document.createElement("div");
+      cardContainer.className =
+        "custom-card justify-content-center border rounded px-2 mt-5 col mr-2";
+      cardHeader.className = "col-12 text-left";
+      cardHeader.innerHTML = item.suit;
+      cardBody.innerHTML = item.num;
+      cardFooter.innerHTML = item.suit;
+      document.querySelector("#main-container").appendChild(cardContainer);
+      cardContainer.appendChild(cardHeader);
+      cardContainer.appendChild(cardBody);
+      cardContainer.appendChild(cardFooter);
+    });
+    return newArrayOfObjects;
   };
+
+  cardGenerator(randomCardNumberGenerator(10));
 };
